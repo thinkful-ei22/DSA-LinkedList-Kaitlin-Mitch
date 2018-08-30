@@ -1,3 +1,5 @@
+const { display, size, isEmpty, findPrevious, findLast } = require('./supplemental-functions');
+
 class _Node {
   constructor(value, next) {
     this.value = value;
@@ -65,30 +67,54 @@ class LinkedList {
     }
   }
 
-  insertAt(item, position) {
-    if (this.head === null) {
-      return;
-    } 
-    else {
-      // find node before insertion
-      let prevNode = this.head;
-      let currNode = this.head;
-      let index = 0;
+  // insertAt(item, position) {
+  //   if (this.head === null) {
+  //     return;
+  //   } 
+  //   else {
+  //     // find node before insertion
+  //     let prevNode = this.head;
+  //     let currNode = this.head;
+  //     let index = 0;
 
-      while(currNode && index < position) {
-        prevNode = currNode;
-        currNode = currNode.next;
-        index++;
-      }
+  //     while(currNode && index < position) {
+  //       prevNode = currNode;
+  //       currNode = currNode.next;
+  //       index++;
+  //     }
 
-      if (currNode) {
-        currNode.next = new _Node(item, currNode.next);
-      }
-      else {
-        prevNode.next = new _Node(item);
-      }
+  //     if (currNode) {
+  //       currNode.next = new _Node(item, currNode.next);
+  //     }
+  //     else {
+  //       prevNode.next = new _Node(item);
+  //     }
+  //   }
+  //   return this.head;
+  // }
+
+  _findNthElement(position) {
+    let node = this.head;
+
+    for (let i = 0; i < position; i++) {
+      node = node.next;
     }
-    return this.head;
+    return node;
+  }
+
+  insertAt(item, position) {
+    if (position < 0) {
+      throw new Error('Position error');
+    }
+    if (position === 0) {
+      this.insertFirst(item);
+    } else {
+      let node = this._findNthElement(position - 1);
+      const newNode = new _Node(item, null);
+
+      newNode.next = node.next;
+      node.next = newNode;
+    }
   }
   
   find(item) {
@@ -137,9 +163,7 @@ class LinkedList {
       console.log('Item not found');
       return;
     }
-    if(item in currNode.value) {
-      prevNode.next = currNode.next;
-    }
+    prevNode.next = currNode.next;
   }
 }
 
