@@ -12,6 +12,9 @@ function main() {
   SLL.insertLast({'Helo': 'Greyhound'});
   SLL.insertLast({'Husker': 'Bloodhound'});
   SLL.insertLast({'Starbuck': 'Chocolate Lab'});
+  // add Tauhida to the list
+  SLL.insertLast({'Tauhida': 'Shih Tzu'});
+  SLL.remove('squirrel');
 
   console.log(JSON.stringify(SLL));
 }
