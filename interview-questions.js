@@ -9,6 +9,16 @@ SLL.insertLast({'Helo': 'Greyhound'});
 SLL.insertLast({'Husker': 'Bloodhound'});
 SLL.insertLast({'Starbuck': 'Chocolate Lab'});
 
+// initialize cyclical linked list
+let CLL = new LinkedList();
+
+// add the following items
+CLL.insertFirst({'Apollo': 'Husky'});
+CLL.insertLast({'Boomer': 'Boxer'});
+CLL.insertLast({'Helo': 'Greyhound'});
+CLL.insertLast({'Husker': 'Bloodhound'});
+CLL.insertLast({'Starbuck': 'Chocolate Lab'}, {'Apollo': 'Husky'});
+
 // 1. Analyze the function. What does the program do? What is the runtime?
 
 function WhatDoesThisProgramDo(lst){
@@ -60,33 +70,77 @@ function reverseList(list) {
   console.log(JSON.stringify(list));
 }
 
-reverseList(SLL);
+//reverseList(SLL);
 
 // 3. Third from the end. Find the third element. 
 
 // find last, modify to go back 3 indexes
 
 function findThirdFromLast(list){
-  // returns the last node in the linked list
+  // set currNode to head of list
   let currNode = list.head;
-
-  while (currNode !== null) {
-    lastNode = currNode;
-    currNode = currNode.next;
-
-  }
-  console.log(lastNode.value);
-
-  let index = 0;
-  while (currNode && index < 3) {
-    if () {
-
+  // initialize our output variable
+  let thirdNode;
+  // set index to 1 instead of zero
+  let index = 1;
+  // while current node exists
+  while (currNode) {
+    // if index is 3 then return the head
+    if (index === 3) {
+      thirdNode = list.head;
+      // else if the index minus 3 equals 0 change our output variable to next node
+    } else if (index - 3 > 0){
+      thirdNode = thirdNode.next;
     }
+    // iterate through the while loop and the index for if statement
     index++;
+    currNode = currNode.next;
   }
+  console.log(JSON.stringify(thirdNode.value));
 }
 
-findThirdFromLast
+//findThirdFromLast(SLL);
+
+// 4. Middle of a list
+
+// find the middle element of a linked list
+
+function middleOfList(list) {
+  // variables to head of list
+  let middle = list.head;
+  let end = list.head;
+
+  while (end !== null && end.next !== null) {
+    middle = middle.next;
+    end = end.next.next;
+  }
+
+  console.log(JSON.stringify(middle.value));
+}
+
+//middleOfList(SLL);
+
+// 5. Cycle in a list
+
+// Find whether a linked list has a cycle
+
+function cycleInList(list) {
+  let currNode = list.head;
+  let flag = 'anything';
+
+  while(currNode !== null) {
+    if (currNode.value === flag) {
+      console.log(true);
+      return true;
+    }
+    currNode.value = flag;
+    currNode = currNode.next;
+  }
+
+  console.log(false);
+  return false;
+}
+cycleInList(CLL);
 
 // Given a sorted linked list, write a function insertInSortedOrder() to insert an item in the sorted linked list preserving the order of the list. You can only take one pass through the list to do this. Don't worry about duplicates.
 
