@@ -24,15 +24,46 @@ class LinkedList {
       tempNode.next = new _Node(item, null);
     }
   }
-  insertBefore(item) {
+
+  insertBefore(item, key) {
     if (this.head === null) {
-      this.insertFirst(item);
+      return;
     }
     else {
-      let tempNode = this.head;
+      // start at the head
+      let currNode = this.head;
+      // keep track of previous
+      let prevNode = this.head;
 
+      while(currNode && !(key in currNode.value)) {
+        prevNode = currNode;
+        currNode = currNode.next;
+
+        if (currNode && key in currNode.value) {
+          prevNode.next = new _Node(item, currNode);
+        }
+      }    
+  }}
+
+  insertAfter(item, key) {
+    if (this.head === null) {
+      return;
+    }
+    else {
+      let currNode = this.head;
+      let prevNode = this.head;
+
+      while (currNode && !(key in currNode.value)) {
+        prevNode = currNode;
+        currNode = currNode.next;
+
+        if (currNode && key in currNode.value) {
+          currNode.next = new _Node(item, currNode.next);
+        }
+      }
     }
   }
+
   insertAt(item, position) {
     if (this.head === null) {
       this.insertFirst(item);

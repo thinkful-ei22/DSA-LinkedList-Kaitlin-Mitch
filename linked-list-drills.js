@@ -12,11 +12,24 @@ function main() {
   SLL.insertLast({'Helo': 'Greyhound'});
   SLL.insertLast({'Husker': 'Bloodhound'});
   SLL.insertLast({'Starbuck': 'Chocolate Lab'});
+
   // add Tauhida to the list
   SLL.insertLast({'Tauhida': 'Shih Tzu'});
+
+  // remove squirrel from the list - results in 'Item not found'
   SLL.remove('squirrel');
 
   console.log(JSON.stringify(SLL));
+
+  // insert Athena before Boomer using insertBefore()
+  SLL.insertBefore({'Athena': 'Poodle'}, 'Boomer');
+
+  // insert Hotdog after Helo
+  SLL.insertAfter({'Hotdog': 'Dinner'}, 'Helo');
+
+  console.log(JSON.stringify(SLL));
+
+
 }
 
 main();
