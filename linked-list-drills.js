@@ -19,7 +19,7 @@ function main() {
   // remove squirrel from the list - results in 'Item not found'
   SLL.remove('squirrel');
 
-  console.log(JSON.stringify(SLL));
+  // console.log(JSON.stringify(SLL));
 
   // insert Athena before Boomer using insertBefore()
   SLL.insertBefore({'Athena': 'Poodle'}, 'Boomer');
@@ -27,9 +27,13 @@ function main() {
   // insert Hotdog after Helo
   SLL.insertAfter({'Hotdog': 'Dinner'}, 'Helo');
 
+  // Using insertAt() insert Kat in the 3rd position of the list
+  SLL.insertAt({'Kat': 'Dog'}, 1);
+
+  // remove Tauhida from the list
+  SLL.remove('Tauhida');
+
   console.log(JSON.stringify(SLL));
-
-
 }
 
 main();
