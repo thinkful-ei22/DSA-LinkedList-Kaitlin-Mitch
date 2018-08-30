@@ -35,6 +35,19 @@ function main() {
 
   //console.log(JSON.stringify(SLL, null, 2));
   display(SLL);
+
+  // display the count of the list
+  size(SLL);
+
+  // is it empty?
+  isEmpty(SLL);
+
+  // what is the prev node
+  findPrevious(SLL, 'Husker');
+
+  // find the last node
+  findLast(SLL);
+
 }
 
 main();
