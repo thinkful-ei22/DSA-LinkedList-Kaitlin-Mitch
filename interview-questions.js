@@ -46,7 +46,6 @@ function WhatDoesThisProgramDo(lst){
 
 
 function reverseList(list) {
-  console.log(JSON.stringify(list));
   let currNode = list.head;
   let prevNode = null;
   let nextNode = list.head;
@@ -62,6 +61,32 @@ function reverseList(list) {
 }
 
 reverseList(SLL);
+
+// 3. Third from the end. Find the third element. 
+
+// find last, modify to go back 3 indexes
+
+function findThirdFromLast(list){
+  // returns the last node in the linked list
+  let currNode = list.head;
+
+  while (currNode !== null) {
+    lastNode = currNode;
+    currNode = currNode.next;
+
+  }
+  console.log(lastNode.value);
+
+  let index = 0;
+  while (currNode && index < 3) {
+    if () {
+
+    }
+    index++;
+  }
+}
+
+findThirdFromLast
 
 // Given a sorted linked list, write a function insertInSortedOrder() to insert an item in the sorted linked list preserving the order of the list. You can only take one pass through the list to do this. Don't worry about duplicates.
 
